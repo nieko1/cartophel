@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Leaflet-opencage-search by OpenCageData</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Leaflet-opencage-search</h1>
+      <h2 class="project-tagline">A Leaflet search control that uses OpenCage Data&#39;s geocoder.</h2>
+      <a href="https://github.com/OpenCageData/leaflet-opencage-search" class="btn">View on GitHub</a>
+      <a href="https://github.com/OpenCageData/leaflet-opencage-search/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/OpenCageData/leaflet-opencage-search/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="opencage-data-search-and-geocoding-control-for-leaflet" class="anchor" href="#opencage-data-search-and-geocoding-control-for-leaflet" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenCage Data Search and Geocoding Control for Leaflet</h1>
+
+<p>A <a href="http://leafletjs.com/">Leaflet</a> search control that uses <a href="http://geocoder.opencagedata.com/">OpenCage Data's</a>
+geocoder.</p>
+
+<p>To see the plugin in action, take a look at the <a href="http://geocoder.opencagedata.com/code/leaflet-demo.html">demo</a>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Clone from GitHub: <code>git@github.com:opencagedata/leaflet-opencage-search.git</code>.</p>
+
+<p>Install with Bower: <code>$ bower install Leaflet.OpenCage.Search</code>.</p>
+
+<p>Download a <a href="https://github.com/opencagedata/leaflet-opencage-search/releases">zip or tarball archive</a> from GitHub.</p>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>The control uses two image files that it expects to find in a directory with
+a path relative to the control's CSS files as <code>../images</code>. If you've installed
+the control using Bower you'll find these in <code>bower_components/Leaflet.OpenCage.Search/dist/images/</code>. If you've
+cloned the control's GitHub repository or downloaded and unpacked an archive
+from GitHub, you'll find these in 'dist/images'.</p>
+
+<p>Whichever installation method you've chosen, you'll need to move a copy of these
+two image files to a directory relative to the location of the control's CSS files.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Load the plugin's CSS and JavaScript files:</p>
+
+<div class="highlight highlight-HTML"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>leaflet-opencage-search/dist/css/L.Control.OpenCageSearch.dev.css<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>leaflet-opencage-search/dist/js/L.Control.OpenCageSearch.dev.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Add the plugin's control to an <code>L.Map</code> instance:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> map <span class="pl-k">=</span> L.map(<span class="pl-s"><span class="pl-pds">'</span>map<span class="pl-pds">'</span></span>).setView([<span class="pl-c1">51.52255</span>, <span class="pl-k">-</span><span class="pl-c1">0.10249</span>], <span class="pl-c1">13</span>);
+<span class="pl-k">var</span> options <span class="pl-k">=</span> {
+    key<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>your-api-key-here<span class="pl-pds">'</span></span>,
+    limit<span class="pl-k">:</span> <span class="pl-c1">10</span>
+};
+<span class="pl-k">var</span> control <span class="pl-k">=</span> L.Control.openCageSearch(options).addTo(map);
+L.tileLayer(<span class="pl-s"><span class="pl-pds">'</span>http://{s}.tile.osm.org/{z}/{x}/{y}.png<span class="pl-pds">'</span></span>, {
+    attribution<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&amp;copy; &lt;a href="http://osm.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors<span class="pl-pds">'</span></span>
+}).addTo(map);
+</pre></div>
+
+<h2>
+<a id="development-and-production-versions" class="anchor" href="#development-and-production-versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development and Production Versions</h2>
+
+<h2>
+<a id="rebuilding-from-source" class="anchor" href="#rebuilding-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rebuilding from Source</h2>
+
+<p>The plugin's build process is managed by <a href="http://gruntjs.com/installing-grunt">Grunt</a>,
+which in turn is built on top of <a href="http://nodejs.org/">Node.js</a>. You'll need to have
+both of these applications installed on your machine to rebuild the plugin from source.</p>
+
+<p>Assuming you have both Grunt and Node.js installed, you can install all the build
+dependencies with a single command, from the plugin's root directory:</p>
+
+<div class="highlight highlight-shell"><pre>$ npm install</pre></div>
+
+<p>This will install all of the plugin's dependencies into the <code>node_modules</code> directory
+(and which is also why you'll find this directory in the plugin's <code>.gitignore</code> file).</p>
+
+<p>Once you have all the dependencies in place, you can rebuild the plugin from source
+by simply running <code>grunt</code>:</p>
+
+<div class="highlight highlight-shell"><pre>$ grunt
+Running <span class="pl-s"><span class="pl-pds">"</span>clean:dist<span class="pl-pds">"</span></span> (clean) task
+Cleaning dist/css...OK
+Cleaning dist/images...OK
+Cleaning dist/js...OK
+
+Running <span class="pl-s"><span class="pl-pds">"</span>jshint:files<span class="pl-pds">"</span></span> (jshint) task
+<span class="pl-k">&gt;&gt;</span> 1 file lint free.
+
+Running <span class="pl-s"><span class="pl-pds">"</span>concat:dist<span class="pl-pds">"</span></span> (concat) task
+File dist/js/L.Control.OpenCageSearch.dev.js created.
+File dist/css/L.Control.OpenCageSearch.dev.css created.
+
+Running <span class="pl-s"><span class="pl-pds">"</span>uglify:dist<span class="pl-pds">"</span></span> (uglify) task
+File dist/js/L.Control.OpenCageSearch.min.js created: 8.38 kB → 6.09 kB
+
+Running <span class="pl-s"><span class="pl-pds">"</span>cssmin:minify<span class="pl-pds">"</span></span> (cssmin) task
+File dist/css/L.Control.OpenCageData.Search.min.css created: 2.86 kB → 2.5 kB
+
+Running <span class="pl-s"><span class="pl-pds">"</span>copy:images<span class="pl-pds">"</span></span> (copy) task
+Copied 2 files
+
+Done, without errors.</pre></div>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>This plugin was based on and inspired by <a href="https://github.com/perliedman">Per Liedman's</a> <a href="https://github.com/perliedman/leaflet-control-geocoder">Leaflet Control Geocoder</a>.
+Thanks, credits and kudos go to Per for making a well structured plugin and for
+making it available under an Open Source license.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/OpenCageData/leaflet-opencage-search">Leaflet-opencage-search</a> is maintained by <a href="https://github.com/OpenCageData">OpenCageData</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
