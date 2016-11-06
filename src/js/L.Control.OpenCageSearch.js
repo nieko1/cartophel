@@ -115,7 +115,24 @@
 			}
 		},
 
+		markGeocode: function(result) {
+			if (result.bounds) {
+				this._map.fitBounds(result.bounds);
+			} else {
+				this._map.panTo(result.center);
+			}
 
+			if (this._geocodeMarker) {
+				this._map.removeLayer(this._geocodeMarker);
+			}
+
+			this._geocodeMarker = new L.Marker(result.center)
+				.bindPopup(result.name)
+				.addTo(this._map)
+				.openPopup();
+
+			return this;
+		},
 
 		_geocode: function(event) {
 			L.DomEvent.preventDefault(event);
@@ -136,7 +153,7 @@
 				this._clearResults();
 			}
 
-			
+			this.markGeocode(result);
 		},
 
 		_toggle: function() {
