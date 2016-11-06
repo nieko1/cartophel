@@ -129,9 +129,7 @@
 			this._geocodeMarker = new L.Marker(result.center)
 				.bindPopup(result.name)
 				.addTo(this._map)
-				.openPopup();
-
-			return this;
+				.openPopup();	
 		},
 
 		_geocode: function(event) {
