@@ -130,6 +130,11 @@
 				.bindPopup(result.name)
 				.addTo(this._map)
 				.openPopup();
+			
+			if (this._geocodeMarker) {
+                	this._map.removeLayer(this._geocodeMarker);
+            		}
+
 
 			return this;
 		},
