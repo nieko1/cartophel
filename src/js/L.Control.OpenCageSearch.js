@@ -122,15 +122,6 @@
 				this._map.panTo(result.center);
 			}
 
-			if (this._geocodeMarker) {
-				this._map.removeLayer(this._geocodeMarker);
-			}
-
-			this._geocodeMarker = new L.Marker(result.center)
-				.bindPopup(result.name)
-				.addTo(this._map)
-				.openPopup();
-
 			return this;
 		},
 
